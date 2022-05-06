@@ -101,7 +101,7 @@ require('yargs')
             describe: 'Scrape only sponsored products',
         },
         'min-rating': {
-            default: 1,
+            default: 0,
             type: 'number',
             describe: 'Minimum allowed rating',
         },
@@ -164,8 +164,8 @@ require('yargs')
         }
 
         // Minimum allowed rating is 1
-        if (!argv['min-rating']) {
-            argv['min-rating'] = 1;
+        if (argv['min-rating']<0) {
+            argv['min-rating'] = 0;
         }
         // Maximum allowed rating is 5
         if (!argv['max-rating']) {
